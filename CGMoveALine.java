@@ -29,6 +29,7 @@ public class CGMoveALine extends JFrame implements KeyListener {
     // Constructor to set up the GUI components and event handlers
     public CGMoveALine() {
         // Set up a panel for the buttons
+
         JPanel btnPanel = new JPanel(new FlowLayout());
 
         JButton btnUp = new JButton("Move TOP ");
@@ -36,8 +37,8 @@ public class CGMoveALine extends JFrame implements KeyListener {
         btnUp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 y1 -= 10;
-                y2 -= 7;
-                y3 -= 5;
+                y2 -= 10;
+                y3 -= 10;
                 canvas.repaint();
                 requestFocus(); // change the focus to JFrame to receive KeyEvent
             }
@@ -47,8 +48,8 @@ public class CGMoveALine extends JFrame implements KeyListener {
         btnDown.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 y1 += 10;
-                y2 += 7;
-                y3 += 5;
+                y2 += 10;
+                y3 += 10;
 
                 canvas.repaint();
                 requestFocus(); // change the focus to JFrame to receive KeyEvent
@@ -60,8 +61,8 @@ public class CGMoveALine extends JFrame implements KeyListener {
         btnLeft.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 x1 -= 10;
-                x2 -= 7;
-                x3 -= 5;
+                x2 -= 10;
+                x3 -= 10;
 
                 canvas.repaint();
                 requestFocus(); // change the focus to JFrame to receive KeyEvent
@@ -72,8 +73,8 @@ public class CGMoveALine extends JFrame implements KeyListener {
         btnRight.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 x1 += 10;
-                x2 += 7;
-                x3 += 5;
+                x2 += 10;
+                x3 += 10;
 
                 canvas.repaint();
                 requestFocus(); // change the focus to JFrame to receive KeyEvent
@@ -127,6 +128,7 @@ public class CGMoveALine extends JFrame implements KeyListener {
         addKeyListener(new KeyAdapter() {
 
             public void keyPressed(KeyEvent evt) {
+
                 switch (evt.getKeyCode()) {
                     case KeyEvent.VK_A:
                         x1 -= 10;
@@ -150,53 +152,53 @@ public class CGMoveALine extends JFrame implements KeyListener {
                         break;
                     case KeyEvent.VK_F:
 
-                        x2 -= 7;
+                        x2 -= 10;
 
                         repaint();
                         break;
                     case KeyEvent.VK_H:
 
-                        x2 += 7;
+                        x2 += 10;
 
                         repaint();
                         break;
                     case KeyEvent.VK_G:
 
-                        y2 += 7;
+                        y2 += 10;
 
                         repaint();
                         break;
                     case KeyEvent.VK_T:
 
-                        y2 -= 7;
+                        y2 -= 10;
 
                         repaint();
                         break;
                     case KeyEvent.VK_J:
 
-                        x3 -= 5;
+                        x3 -= 10;
 
                         repaint();
                         break;
                     case KeyEvent.VK_L:
 
-                        x3 += 5;
+                        x3 += 10;
 
                         repaint();
                         break;
                     case KeyEvent.VK_K:
 
-                        y3 += 5;
+                        y3 += 10;
 
                         repaint();
                         break;
                     case KeyEvent.VK_I:
 
-                        y3 -= 5;
+                        y3 -= 10;
 
                         repaint();
                         break;
-                    case KeyEvent.VK_0:
+                    case KeyEvent.VK_Z:
 
                         isRectVisible = !isRectVisible;
 
@@ -209,14 +211,12 @@ public class CGMoveALine extends JFrame implements KeyListener {
                         repaint();
                         break;
                     case KeyEvent.VK_2:
-                        
 
                         repaint();
                         break;
                 }
             }
 
-            
         });
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Handle the CLOSE button
@@ -251,6 +251,13 @@ public class CGMoveALine extends JFrame implements KeyListener {
             super.paintComponent(g);
             setBackground(Color.BLACK);
             g.setColor(Color.WHITE);
+            g.drawString("لاضافة مستطيل اضغط على الز المخصص لاضافة المستطيل في الاسفل", 40, 40);
+            g.drawString("لاضافة مربع اضغط على الز المخصص لاضافة مربع في الاسفل", 40, 60);
+            g.drawString("لاضافة دائره اضغط على الز المخصص لاضافة دائره في الاسفل", 40, 80);
+            g.drawString("   لتحريك المستطيل للاعلى استخدمW  وللاسفل استخدم S ولليمين استخمد D ولليسار استخدم  A ", 40, 100);
+            g.drawString("   لتحريك المربع  للاعلى استخدمT  وللاسفل استخدم G ولليمين استخمد H ولليسار استخدم  F ", 40, 120);
+
+            g.drawString("   لتحريك الدائره للاعلى استخدمI  وللاسفل استخدم K ولليمين استخمد L ولليسار استخدم  J", 40, 140);
 
             if (isRectVisible) {
                 g.fillRect(x1, y1, 250, 100); // Draw the rect
@@ -264,7 +271,6 @@ public class CGMoveALine extends JFrame implements KeyListener {
             }
         }
     }
-    
 
     // The entry main() method
     public static void main(String[] args) {
